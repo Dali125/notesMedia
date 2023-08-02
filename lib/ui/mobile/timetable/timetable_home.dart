@@ -32,7 +32,7 @@ class TimeTableController extends GetxController{
   void onInit() {
 
     super.onInit();
-    ever(reminders, (_) => getTimeTable());
+    getTimeTable();
   }
 
 }
@@ -45,6 +45,11 @@ class TimeTableController extends GetxController{
 class TimetableIndex extends GetView<TimeTableController>{
 
   TimetableIndex();
+  int dayno = DateTime.now().day;
+  int month = DateTime.now().month;
+  int year = DateTime.now().year;
+
+
 
 
   @override
@@ -115,6 +120,18 @@ class TimetableIndex extends GetView<TimeTableController>{
                     controller.day.value = date.day;
                     print(formattedDate);
 
+                    // Split the date string using '/' as the separator
+                    List<String> dateParts = formattedDate.split('/');
+
+                    // Extract day, month, and year components
+                    dayno = int.parse(dateParts[1]);
+                    month = int.parse(dateParts[0]);
+                    year = int.parse(dateParts[2]);
+
+                    print('Day: $dayno');
+                    print('Month: $month');
+                    print('Year: $year');
+
                 },
               ),
 
@@ -137,12 +154,16 @@ class TimetableIndex extends GetView<TimeTableController>{
 
                     TimeTable timetable = controller.reminders[index];
 
-                    return ColorfulCard(date: timetable.date,
-                        startTime: timetable.startTime,
-                        endTime: timetable.endTime,
-                        repeating: timetable.repeating,
-                        color: timetable.color,
-                        subject: timetable.subject);
+                    if(dayno == 1) {
+                      return ColorfulCard(date: timetable.date,
+                          startTime: timetable.startTime,
+                          endTime: timetable.endTime,
+                          repeating: timetable.repeating,
+                          color: timetable.color,
+                          subject: timetable.subject);
+                    }else{
+                      return Center();
+                    }
                   }
                   ,
                 );

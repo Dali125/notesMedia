@@ -24,6 +24,13 @@ class NotebookSelectionController extends GetxController {
     List<Notebook> data = await db.getAllNotebooks();
     notebooks.value = data;
   }
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    refreshNotebookData();
+  }
 }
 
 
@@ -31,6 +38,7 @@ class NotebookSelectionController extends GetxController {
 class NoteBookSelection extends GetView<NotebookSelectionController>{
 
   NoteBookSelection();
+
 
 
   @override
