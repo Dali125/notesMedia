@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants/device_constants.dart';
-
 class DesktopHome extends StatefulWidget {
   const DesktopHome({Key? key}) : super(key: key);
 
@@ -10,30 +8,17 @@ class DesktopHome extends StatefulWidget {
 }
 
 class _DesktopHomeState extends State<DesktopHome> {
-
-
   @override
   Widget build(BuildContext context) {
-
-    DeviceDimensions dimensions = DeviceDimensions();
     double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-
       appBar: AppBar(
-        title: Text('Desktop'),
+        title: const Text('Desktop'),
       ),
-      
       body: Column(
-        children: [
-          Text(width.toString())
-        ],
-        
+        children: [Text(width.toString())],
       ),
-
-    )
-
-
-    ;
+    );
   }
 }

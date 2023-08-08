@@ -43,8 +43,21 @@ dependencies:
   tflite_flutter:
   image_picker:
   firebase_core:
+  cloud_firestore:
   custom_navigation_bar: ^0.8.2
   fluttertoast:
+  dotted_border:
+  animated_splash_screen:
+  rive: ^0.9.1
+  page_transition: "^2.0.9"
+  introduction_screen: 3.1.11
+  animate_do:
+  file_picker:
+  im_stepper:
+  firebase_storage:
+  shared_preferences:
+  firebase_auth:
+  
 
 
 

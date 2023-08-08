@@ -17,19 +17,18 @@ class _OcrScreenState extends State<OcrScreen> {
   @override
   void initState() {
     super.initState();
-   loadModel();
+    loadModel();
   }
 
   Future<void> loadModel() async {
     String modelPath = 'assets/lite-model_keras-ocr_float16_2.tflite';
     try {
       final gpuDelegateV2 = GpuDelegateV2(); // Create a GPU delegate instance
-      final options = InterpreterOptions()..addDelegate(gpuDelegateV2); // Add the GPU delegate to the interpreter
+      final options = InterpreterOptions()
+        ..addDelegate(gpuDelegateV2); // Add the GPU delegate to the interpreter
 
       interpreter = await Interpreter.fromAsset(modelPath, options: options);
-    } catch (e) {
-      print('Error loading model: $e');
-    }
+    } catch (e) {}
   }
 
   Future<void> runModelOnImage(File image) async {
@@ -48,14 +47,13 @@ class _OcrScreenState extends State<OcrScreen> {
       setState(() {
         _recognitions = recognitions;
       });
-    } catch (e) {
-      print('Error running model: $e');
-    }
+    } catch (e) {}
   }
 
   Future<void> _pickImage() async {
     final imagePicker = ImagePicker();
-    final pickedImage = await ImagePicker.platform.getImageFromSource(source: ImageSource.gallery);
+    final pickedImage = await ImagePicker.platform
+        .getImageFromSource(source: ImageSource.gallery);
     if (pickedImage != null) {
       setState(() {
         _pickedImage = File(pickedImage.path);
@@ -76,7 +74,6 @@ class _OcrScreenState extends State<OcrScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             if (_pickedImage != null)
-
               Image.file(
                 _pickedImage!,
                 height: 200,
